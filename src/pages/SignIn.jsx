@@ -17,7 +17,7 @@ const SignIn = () => {
             return;
         }
         try {
-            const res = await axios.post("http://localhost:5000/api/signin", {
+            const res = await axios.post("https://shop-com-twnt.onrender.com/api/signin", {
                 email: userEmail.trim().toLowerCase(),
                 password: userPassword.trim()
             })

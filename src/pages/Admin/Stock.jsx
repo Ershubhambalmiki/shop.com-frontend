@@ -39,7 +39,7 @@ const handelNext=()=>{
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/get-products")
+        const res = await axios.get("https://shop-com-twnt.onrender.com/api/get-products")
         setGetStock(res?.data?.getAllProduct)
       } catch (error) {
         alert(error.res?.data?.message)

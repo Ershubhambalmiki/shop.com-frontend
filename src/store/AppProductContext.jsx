@@ -19,7 +19,7 @@ const AppProductContext = ({ children }) => {
 
     const getAllProduct = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/api/get-products")
+            const res = await axios.get("https://shop-com-twnt.onrender.com/api/get-products")
             setAddProduct(res?.data?.getAllProduct)
         } catch (error) {
             console.log(error);

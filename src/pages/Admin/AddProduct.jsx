@@ -23,7 +23,7 @@ const AddProduct = () => {
                 alert("All Field Is Requaiare")
                 return
             }
-            const result = await axios.post("http://localhost:5000/api/add-products", {
+            const result = await axios.post("https://shop-com-twnt.onrender.com/api/add-products", {
                 name: productName,
                 brand: productBrand,
                 category: productCategory,

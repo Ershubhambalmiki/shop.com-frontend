@@ -34,7 +34,7 @@ const navigate=useNavigate()
     }
     try {
       setLoading(true)
-      const res = await axios.post("http://localhost:5000/api/signup", {
+      const res = await axios.post("https://shop-com-twnt.onrender.com/api/signup", {
         name,
         email: email.trim().toLocaleLowerCase(),
         number,

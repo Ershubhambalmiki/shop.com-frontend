@@ -17,7 +17,7 @@ const AdminLogin = () => {
         }
 
         try {
-            const res = await axios.post("http://localhost:5000/api/admin-signin", {
+            const res = await axios.post("https://shop-com-twnt.onrender.com/api/admin-signin", {
                 email: email.toLowerCase(),
                 password
             })

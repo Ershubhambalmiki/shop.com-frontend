@@ -19,7 +19,7 @@ const UerProfile = () => {
 
     const grtUserdata = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/api/get-user-data")
+            const res = await axios.get("https://shop-com-twnt.onrender.com/api/get-user-data")
             setUserData(res?.data?.result)
         } catch (error) {
             if (error.res?.data?.message) {
@@ -42,7 +42,7 @@ const UerProfile = () => {
                 alert("All Field Is Requard")
                 return;
             }
-            const res = await axios.post(`http://localhost:5000/api/user-update`, {
+            const res = await axios.post(`https://shop-com-twnt.onrender.com/api/user-update`, {
                 userId,
                 name: userName.toLowerCase(),
                 file: file
