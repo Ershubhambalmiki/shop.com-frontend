@@ -15,9 +15,7 @@ const Product = () => {
     }, [addProduct])
 
     const AllCategoryCloth = () => {
-
         setClothProduct(addProduct)
-
     }
     const ChooseWomenCloth = () => {
         if (womenCategory) {
@@ -107,7 +105,7 @@ const Product = () => {
                 <div className="mx-2 sm:mx-4 md:mx-6 lg:mx-10 mt-10 lg:mt-20 w-full">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         {
-                            clothProduct.map((item, index) =>
+                            clothProduct ===0?<div><p>Loading</p></div>:clothProduct.map((item, index) =>
                                 <Link to={`/iteminformetion/?id=${item.id}`} key={index}>
                                     <div className="bg-white rounded-xl p-4 shadow-xl h-full flex flex-col justify-between">
                                         <img src={item.image} className="mx-auto mb-4 h-56 object-contain" />
