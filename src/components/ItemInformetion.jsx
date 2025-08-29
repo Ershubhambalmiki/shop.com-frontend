@@ -7,7 +7,7 @@ const ItemInformetion = () => {
 
     const [searchparams] = useSearchParams()
     const id = searchparams.get("id")
-    const { size, setSize, setCart, setBuy, setAddToCartNotification, currentUser, addProduct,quantity,setQuantity } = useContext(storedata)
+    const { size, setSize, setCart, setBuy, setAddToCartNotification, currentUser, addProduct, quantity, setQuantity } = useContext(storedata)
     const productInformetion = addProduct.find((item) => item.id == id)
     console.log(productInformetion, "product informmetion");
 
@@ -15,23 +15,25 @@ const ItemInformetion = () => {
         setSize("")
     }, [])
 
-    const handelquantitydicrement=()=>{
-        if(quantity===1){
+    const handelquantitydicrement = () => {
+        if (quantity === 1) {
             setQuantity(quantity)
         }
-        else{
-            setQuantity(quantity-1)
+        else {
+            setQuantity(quantity - 1)
         }
     }
 
     const navigate = useNavigate()
     const handleAddtoCArtBtn = (e) => {
         e.preventDefault();
-        // if (!currentUser) {
-        //     alert("Please Login")
-        //     navigate("/signin")
-        //     return;
-        // }
+        if (!currentUser) {
+            setTimeout(() => {
+                alert("Please Login")
+            }, 1000);
+            navigate("/signin")
+            return;
+        }
         const localStorageData = JSON.parse(localStorage.getItem("cart")) || [];
         const alreadyCart = localStorageData.find(item => item.id == productInformetion.id)
         if (alreadyCart) {
@@ -50,11 +52,13 @@ const ItemInformetion = () => {
 
     const handleBuyBtn = (e) => {
         e.preventDefault();
-        // if (!currentUser) {
-        //     alert("Please Login")
-        //     navigate("/signin")
-        //     return;
-        // }
+        if (!currentUser) {
+            setTimeout(() => {
+                alert("Please Login")
+            }, 1000);
+            navigate("/signin")
+            return;
+        }
         if (size === "") {
             alert("please slect size ")
             return;
@@ -66,11 +70,11 @@ const ItemInformetion = () => {
             alert("alrady your buy product")
             return;
         }
-         const orderWithSize = { ...productInformetion, size: size,quantity:quantity };
+        const orderWithSize = { ...productInformetion, size: size, quantity: quantity };
 
-    const updateOrder = [...localStorageOrderData, orderWithSize];
-    localStorage.setItem("order", JSON.stringify(updateOrder));
-    setBuy(updateOrder);
+        const updateOrder = [...localStorageOrderData, orderWithSize];
+        localStorage.setItem("order", JSON.stringify(updateOrder));
+        setBuy(updateOrder);
 
         Swal.fire({
             icon: "success",
@@ -169,11 +173,11 @@ const ItemInformetion = () => {
                     </div>
                     <div className="col-span-1 text-right flex">
                         <button className='px-2  bg-gray-300'
-                        onClick={handelquantitydicrement}
+                            onClick={handelquantitydicrement}
                         >-</button>
                         <p>{quantity}</p>
                         <button className='px-2  bg-gray-300'
-                         onClick={()=>setQuantity(quantity+1)}
+                            onClick={() => setQuantity(quantity + 1)}
                         >+</button>
                     </div>
                     <div className="flex items-center gap-4">

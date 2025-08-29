@@ -7,13 +7,16 @@ const Orders = () => {
 
   const navigate = useNavigate()
 
-  // useEffect(() => {
-  //   if (!currentUser) {
-  //     alert("Please Login")
-  //     navigate("/signin")
-  //     return;
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (!currentUser) {
+      setTimeout(() => {
+        alert("Please Login")
+      }, 1000);
+      navigate("/signin")
+      return;
+    }
+  }, [])
+
 
   useEffect(() => {
     const localStorageorderData = JSON.parse(localStorage.getItem("order")) || [];
@@ -29,108 +32,107 @@ const Orders = () => {
   return (
 
     <>
-      <meta charSet="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Order Details</title>
-      <div className="max-w-3xl mx-auto  bg-gray-200 rounded-xl shadow-xl p-6 grid gap-6 mb-2">
-        {/* Header */}
+      <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 space-y-6">
         <div className="flex justify-between items-center mt-20">
-          <h2 className="text-xl font-semibold">#012345/10</h2>
-          <button className="text-gray-400 hover:text-black">✕</button>
+          <h2 className="text-lg sm:text-xl font-semibold">#012345/10</h2>
+          <button className="text-gray-400 hover:text-black text-xl">✕</button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
           <div>
             <p className="text-gray-400">Created at</p>
             <p>April 23, 2023 at 9:48 pm</p>
           </div>
           <div>
             <p className="text-gray-400">Payment</p>
-            <span className="inline-block bg-green-500 text-black px-2 py-0.5 rounded text-xs font-semibold">
+            <span className="inline-block bg-green-500 text-white px-3 py-1 rounded text-xs font-semibold">
               Paid
             </span>
           </div>
           <div>
             <p className="text-gray-400">Status</p>
-            <span className="inline-block bg-yellow-500 text-black px-2 py-0.5 rounded text-xs font-semibold">
+            <span className="inline-block bg-yellow-500 text-black px-3 py-1 rounded text-xs font-semibold">
               In progress
             </span>
           </div>
         </div>
-        {/* Customer Info */}
-        <div className="border-t border-gray-600 pt-4">
-          <p className="font-medium">Customer</p>
-          <p>Dunder Mufflin LTD.</p>
-          <p className="text-blue-400">hello@dundermufflin.com</p>
-          <p>(724) 234-848-9434</p>
+
+        <div className="border-t border-gray-200 pt-4">
+          <p className="font-medium text-lg mb-2">Customer</p>
+          <p className="font-semibold">Dunder Mufflin LTD.</p>
+          <p className="text-blue-500">hello@dundermufflin.com</p>
+          <p className="text-gray-700">(724) 234-848-9434</p>
         </div>
-        {/* Timeline */}
-        <div className="border-t border-gray-600 pt-4 grid gap-4">
-          <p className="font-medium">Timeline</p>
-          <div className="space-y-3">
+
+        <div className="border-t border-gray-200 pt-4">
+          <p className="font-medium text-lg mb-4">Timeline</p>
+          <div className="space-y-4">
             <div className="flex items-start gap-3">
-              <div className="w-4 h-4 rounded-full border-2 border-white mt-1" />
+              <div className="w-4 h-4 rounded-full border-2 border-gray-400 mt-1"></div>
               <div>
-                <p>The packing has been started</p>
-                <p className="text-sm text-gray-400">
+                <p className="font-medium">The packing has been started</p>
+                <p className="text-sm text-gray-500">
                   Confirmed by Tommy Smith - Feb 16, 2024
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="w-4 h-4 rounded-full bg-green-500 mt-1" />
+              <div className="w-4 h-4 rounded-full bg-green-500 mt-1"></div>
               <div>
-                <p>The Invoice has been sent to the customer</p>
-                <p className="text-sm text-gray-400">
+                <p className="font-medium">The Invoice has been sent to the customer</p>
+                <p className="text-sm text-gray-500">
                   Sent to{" "}
-                  <span className="text-blue-400">hello@dundermufflin.com</span> -
-                  Feb 16, 2024
+                  <span className="text-blue-500">hello@dundermufflin.com</span> - Feb
+                  16, 2024
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="w-4 h-4 rounded-full bg-green-500 mt-1" />
+              <div className="w-4 h-4 rounded-full bg-green-500 mt-1"></div>
               <div>
-                <p>The Invoice has been created</p>
-                <p className="text-sm text-gray-400">
+                <p className="font-medium">The Invoice has been created</p>
+                <p className="text-sm text-gray-500">
                   Created by Tommy Smith - Feb 16, 2024
                 </p>
               </div>
             </div>
           </div>
         </div>
-        {/* Items List */}
-        {
-          buy.map((item) =>
-            <div key={item.id} className='grid grid-cols-1'>
-              <div className='flex justify-center '>
-                <button className='px-5  p-2 bg-red-500 text-white  rounded-lg'
-                  onClick={() => handelCancelBtn(item.id)}
-                >Order Cancel</button>
-              </div>
-              <div>
-                <img
-                  src={item.image}
-                  alt="T-shirt"
-                  className="w-16 h-16 object-cover rounded-md col-span-1"
-                />
 
-                <span className='text-gray-700 text-bold'>Product Name</span>
-                <p className=" font-semibold">{item.name}</p>
-                <span className='text-gray-700 text-bold'>Brand</span>
-                <p className="font-semibold">{item.brand}</p>
-                <span className=' text-gray-700 text-bold'>Size</span>
-                <p className='font-semibold'>{item.size}</p>
-                <p className='text-gray-700 text-bold'>quntity</p>
-                <p className='font-semibold'>{item.quantity}</p>
-                <div>
-                  <p className='text-gray-700 text-bold'>Price</p>
-                  <p className='font-semibold'>{item.price}</p>
-                </div>
+        <div className="border-t border-gray-200 pt-4 space-y-6">
+          <p className="font-medium text-lg">Products</p>
+          {buy.map((item) => (
+            <div
+              key={item.id}
+              className="flex flex-col sm:flex-row sm:items-center gap-4 bg-gray-50 p-4 rounded-lg shadow-sm"
+            >
+              <img
+                src={item.image}
+                alt="product"
+                className="w-20 h-20 object-cover rounded-md"
+              />
+
+              <div className="flex-1 space-y-1">
+                <p className="font-semibold text-gray-900">{item.name}</p>
+                <p className="text-sm text-gray-600">Brand: {item.brand}</p>
+                <p className="text-sm text-gray-600">Size: {item.size}</p>
+                <p className="text-sm text-gray-600">Quantity: {item.quantity}</p>
+                <p className="font-semibold text-gray-900">₹ {item.price}</p>
+              </div>
+
+              <div className="sm:ml-auto">
+                <button
+                  className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+                  onClick={() => handelCancelBtn(item.id)}
+                >
+                  Cancel
+                </button>
               </div>
             </div>
-          )
-        }
+          ))}
+        </div>
       </div>
+
     </>
 
   )
