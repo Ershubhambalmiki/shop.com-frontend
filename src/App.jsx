@@ -13,8 +13,8 @@ import Product from './pages/Product';
 import Orders from './pages/Orders';
 import SignIn from './pages/SignIn';
 import UerProfile from './components/UerProfile';
-import AddProduct from './pages/Admin/AddProduct';
 import StoreStock from './pages/Admin/Stock';
+import AddProduct from "./pages/Admin/AddProduct"
 import AdminLogin from './pages/Admin/AdminLogin';
 
 function App() {
