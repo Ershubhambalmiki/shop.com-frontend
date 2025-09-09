@@ -8,8 +8,8 @@ const Product = () => {
     const [kidsCategory] = useState("Kids")
     const [brand, setBrand] = useState("")
     const [price, setPrice] = useState(0)
-    const{addProduct}=useContext(storedata)
-    
+    const { addProduct } = useContext(storedata)
+
     useEffect(() => {
         setClothProduct(addProduct)
     }, [addProduct])
@@ -89,12 +89,12 @@ const Product = () => {
                             <div className="grid gap-2">
                                 <h2 className="font-semibold text-lg">Select Brand</h2>
                                 <select className='border' value={brand} onChange={(e) => setBrand(e.target.value)}>
-                                    <option  value="">Select</option>
+                                    <option value="">Select</option>
                                     {
                                         addProduct.map((item, index) => <option key={index}>{item.brand}</option>)
                                     }
                                 </select>
-                               
+
                             </div>
                             <button className='bg-blue-500 text-white py-2 rounded' onClick={hanSelectBtn}>Search</button>
                         </div>
@@ -105,7 +105,11 @@ const Product = () => {
                 <div className="mx-2 sm:mx-4 md:mx-6 lg:mx-10 mt-10 lg:mt-20 w-full">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         {
-                            clothProduct ===0?<div><p>Loading</p></div>:clothProduct.map((item, index) =>
+                            clothProduct.length === 0 ? <div><div className="flex items-center justify-center w-56 h-56 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                                <div className="px-3 py-1 text-xs font-medium leading-none text-center text-blue-800 bg-blue-200 rounded-full animate-pulse dark:bg-blue-900 dark:text-blue-200">
+                                    loading...
+                                </div>
+                            </div></div> : clothProduct.map((item, index) =>
                                 <Link to={`/iteminformetion/?id=${item.id}`} key={index}>
                                     <div className="bg-white rounded-xl p-4 shadow-xl h-full flex flex-col justify-between">
                                         <img src={item.image} className="mx-auto mb-4 h-56 object-contain" />

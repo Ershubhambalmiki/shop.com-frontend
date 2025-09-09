@@ -24,7 +24,7 @@ function App() {
         <Routes>
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/stock" element={<StoreStock />} />
-          <Route path="/add-products" element={<AddProduct />} />
+          <Route path="/add-product" element={<AddProduct />} />
         </Routes>
         <Header />
         <Routes>

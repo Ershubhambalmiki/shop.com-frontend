@@ -81,10 +81,10 @@ const handelNext=()=>{
                     <i className="fas fa-boxes icon" /> <span className='text-black'>Product Inventory</span>
                   </h3>
 
-                  <Link to={"/add-products"}>
-                    <div className="btn btn-primary">
+                  <Link to={"/add-product"}>
+                    <button className="btn btn-primary">
                       <i className="fas fa-plus" /> Add Stock
-                    </div>
+                    </button>
                   </Link>
                 </div>
                 <table className="stock-table">
